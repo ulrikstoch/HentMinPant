@@ -84,7 +84,6 @@ mixpanel.init("dbb36c549fb049fa2e49267c35cd5a18");</script>
 
         var latlng = {lat: lt, lng: lg};
         var adressefelt = document.getElementById('adresse');
-        document.getElementById('adresse').value=adressefelt;
         // det er her jeg ikke kan assigne 'adressefelt' værdien til value attributten er et inputfelt. Får bare 'HTML'
 
         geocoder.geocode({'location': latlng}, function(results, status) {
@@ -95,7 +94,9 @@ mixpanel.init("dbb36c549fb049fa2e49267c35cd5a18");</script>
                     var street_number = results[i].address_components[0].short_name;
                     var street_address = results[i].address_components[1].short_name;
                     var city = results[i].address_components[2].short_name;
-                    adressefelt.innerHTML = (street_address +" "+ street_number + ", " + city);
+                    let complete = street_address + " " + street_number + ", " + city;
+
+                    adressefelt.value = complete;
                   }
               }
             } else {
